@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+	<changeSet author="jalbors" id="01.00.02-mascotas_add_apodo">
+		<comment>Tabla de mascotas</comment>
+			<addColumn tableName="MASCOTAS">
+				<column name="APODO" type="java.sql.Types.VARCHAR(20)"
+					remarks="Apodo de LA MASCOTA">
+					<constraints nullable="true" />
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet author="jalbors" id="01.00.02">
+		<tagDatabase tag="01.00.02" />
+	</changeSet>
+
+</databaseChangeLog>

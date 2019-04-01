@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: Oficinajava Prototipo - Repositorio
+Implementation-Version: 01.00.00-SNAPSHOT
+Built-By: jalbors
+Implementation-Vendor-Id: es.gva.oficinajava
+Build-Jdk: 1.8.0_162
+Implementation-URL: oficinajava/oficinajava-prototipo/oficinajava-prot
+ otipo-repository
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: DGTIC
+

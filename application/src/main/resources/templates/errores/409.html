@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html data-layout-decorate="~{layouts/bootstrap-layout}" lang="es">
+<head>
+<meta charset="UTF-8" />
+<title>Login - Prototipo - Oficinajava</title>
+</head>
+<body>
+
+  <header>
+    <h1>Prototipo - Oficinajava</h1>
+  </header>
+
+  <section data-layout-fragment="content">
+    <div>
+    <legend data-th-text="#{error_409}">Error 409 - Conflicto</legend>
+      <div>
+        <p data-th-text="${mensaje}">Mensaje de error</p>
+        <p>
+          <a href="#" onclick="javascript:window.history.back();"
+            data-th-text="#{label_volver}">Volver</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

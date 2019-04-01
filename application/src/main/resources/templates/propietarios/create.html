@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html data-layout-decorate="~{layouts/bootstrap-layout}" lang="es">
+<head>
+<title
+  data-th-text="#{label_entidad_listar(#{label_propietario_plural})}">Crear
+  Propietarios - Oficinajava - Prototipo</title>
+</head>
+<body>
+
+  <header>
+    <a href="#">Valencià</a> <a href="#">Castellano</a>
+    <h1>Prototipo - Oficinajava</h1>
+  </header>
+
+  <nav>
+    <a href="list.html">Listar</a> <a href="create.html">Crear</a>
+  </nav>
+
+  <section data-layout-fragment="content">
+    <div>
+
+      <h2
+        data-th-text="#{label_entidad_crear(#{label_propietario_plural})}">Crear
+        Propietarios</h2>
+
+      <div>
+
+        <!-- FORM -->
+        <form class="form-horizontal validate" method="POST"
+          data-th-object="${propietario}"
+          data-th-action="@{/propietarios}">
+
+          <fieldset id="containerFields">
+            <legend class="sr-only"
+              data-th-text="#{label_data_entity(#{label_propietario})}">Propietario</legend>
+
+            <div class="form-group has-error has-feedback"
+              id="propietario-nombre-field"
+              data-th-classappend="${#fields.hasErrors('nombre')}? 'has-error has-feedback'"
+              data-th-class="form-group">
+              <label for="nombre" class="col-md-3 control-label"
+                data-th-text="#{label_propietario_nombre}">nombre</label>
+              <div class="col-md-6">
+                <input id="nombre" name="nombre"
+                  data-th-value="*{{nombre}}" type="text"
+                  class="form-control" placeholder="nombre"
+                  data-th-placeholder="#{label_propietario_nombre}"
+                  data-toggle="tooltip" aria-describedby="nombre"
+                  maxlength="30" size="30" /> <span
+                  data-th-classappend="${#fields.hasErrors('nombre')}? 'glyphicon glyphicon-remove form-control-feedback'"
+                  class="glyphicon glyphicon-remove form-control-feedback"
+                  data-th-if="${#fields.hasErrors('nombre')}"
+                  aria-hidden="true"></span> <span id="nombre-error"
+                  class="help-block"
+                  data-th-if="${#fields.hasErrors('nombre')}"
+                  data-th-errors="*{nombre}">Mensaje error.</span>
+              </div>
+            </div>
+            <div class="form-group has-error has-feedback"
+              id="propietario-apellidos-field"
+              data-th-classappend="${#fields.hasErrors('apellidos')}? 'has-error has-feedback'"
+              data-th-class="form-group">
+              <label for="apellidos" class="col-md-3 control-label"
+                data-th-text="#{label_propietario_apellidos}">apellidos</label>
+              <div class="col-md-6">
+                <input id="apellidos" name="apellidos"
+                  data-th-value="*{{apellidos}}" type="text"
+                  class="form-control" placeholder="apellidos"
+                  data-th-placeholder="#{label_propietario_apellidos}"
+                  data-toggle="tooltip"
+                  aria-describedby="apellidos" required="required"
+                  maxlength="30" size="30" /> <span
+                  data-th-classappend="${#fields.hasErrors('apellidos')}? 'glyphicon glyphicon-remove form-control-feedback'"
+                  class="glyphicon glyphicon-remove form-control-feedback"
+                  data-th-if="${#fields.hasErrors('apellidos')}"
+                  aria-hidden="true"></span> <span id="apellidos-error"
+                  class="help-block"
+                  data-th-if="${#fields.hasErrors('apellidos')}"
+                  data-th-errors="*{apellidos}">Mensaje de error.</span>
+              </div>
+            </div>
+
+            <!-- Fecha de Nacimiento -->
+            <div class="form-group has-error has-feedback"
+              id="propietario-fechaNacimiento-field"
+              data-th-classappend="${#fields.hasErrors('fechaNacimiento')}? 'has-error has-feedback'"
+              data-th-class="form-group">
+              <label for="fechaNacimiento"
+                class="col-md-3 control-label"
+                data-th-text="#{label_propietario_fecha_nacimiento}">fechaNacimiento</label>
+              <div class="col-md-6">
+                <input id="fechaNacimiento" name="fechaNacimiento"
+                  data-th-value="*{{fechaNacimiento}}" type="text"
+                  data-th-attr="data-dateformat=${fechaNacimiento_date_format}"
+                  class="form-control datetimepicker"
+                  placeholder="fechaNacimiento"
+                  data-th-placeholder="#{label_propietario_fecha_nacimiento}"
+                  data-toggle="tooltip"
+                  aria-describedby="fechaNacimiento"
+                  required="required" maxlength="30" size="30" /> <span
+                  data-th-classappend="${#fields.hasErrors('fechaNacimiento')}? 'glyphicon glyphicon-remove form-control-feedback'"
+                  class="glyphicon glyphicon-remove form-control-feedback"
+                  data-th-if="${#fields.hasErrors('fechaNacimiento')}"
+                  aria-hidden="true"></span> <span
+                  id="fechaNacimiento-error" class="help-block"
+                  data-th-if="${#fields.hasErrors('fechaNacimiento')}"
+                  data-th-errors="*{fechaNacimiento}">Mensaje de
+                  error.</span>
+              </div>
+            </div>
+
+            <div class="form-group has-error has-feedback"
+              id="propietario-direccion-field"
+              data-th-classappend="${#fields.hasErrors('direccion')}? 'has-error has-feedback'"
+              data-th-class="form-group">
+              <label for="direccion" class="col-md-3 control-label"
+                data-th-text="#{label_propietario_direccion}">direccion</label>
+              <div class="col-md-6">
+                <input id="direccion" name="direccion"
+                  data-th-value="*{{direccion}}" type="text"
+                  class="form-control" placeholder="direccion"
+                  data-th-placeholder="#{label_propietario_direccion}"
+                  data-toggle="tooltip"
+                  aria-describedby="direccion" required="required"
+                  maxlength="50" size="50" /> <span
+                  data-th-classappend="${#fields.hasErrors('direccion')}? 'glyphicon glyphicon-remove form-control-feedback'"
+                  class="glyphicon glyphicon-remove form-control-feedback"
+                  data-th-if="${#fields.hasErrors('direccion')}"
+                  aria-hidden="true"></span> <span id="direccion-error"
+                  class="help-block"
+                  data-th-if="${#fields.hasErrors('direccion')}"
+                  data-th-errors="*{direccion}">Mensaje de error.</span>
+              </div>
+            </div>
+
+            <!-- Selector de ciudades -->
+            <div class="form-group has-error has-feedback"
+              data-z="ddfc3b4a" id="propietario-ciudad-field"
+              data-th-classappend="${#fields.hasErrors('ciudad')}? 'has-error has-feedback'"
+              data-th-class="form-group">
+              <label for="ciudad" class="col-md-3 control-label"
+                data-th-text="#{label_propietario_ciudad}">ciudad</label>
+              <div class="col-md-6">
+                <!-- Select2 -->
+                <select data-th-field="*{ciudad}"
+                  class="form-control dropdown-select-ajax"
+                  data-th-data-ajax--url="@{/propietarios/s2}"
+                  data-ajax--delay="250" data-th-data-ajax--data-type="json"
+                  data-data-placeholder="#{info_select_an_option}">
+                  <option data-th-unless="*{ciudad} == null"
+                    data-th-value="*{ciudad.id}"
+                    data-th-text="*{{ciudad}}" selected="selected">ciudad</option>
+                </select> <span
+                  data-th-classappend="${#fields.hasErrors('ciudad')}? 'glyphicon glyphicon-remove form-control-feedback'"
+                  class="glyphicon glyphicon-remove form-control-feedback"
+                  data-th-if="${#fields.hasErrors('ciudad')}"
+                  aria-hidden="true"></span> <span id="ciudad-error"
+                  class="help-block"
+                  data-th-if="${#fields.hasErrors('ciudad')}"
+                  data-th-errors="*{ciudad}">Mensaje de error.</span>
+              </div>
+            </div>
+
+
+
+            <div class="form-group has-error has-feedback"
+              id="propietario-telefono-field"
+              data-th-classappend="${#fields.hasErrors('telefono')}? 'has-error has-feedback'"
+              data-th-class="form-group">
+              <label for="telefono" class="col-md-3 control-label"
+                data-th-text="#{label_propietario_telefono}">telefono</label>
+              <div class="col-md-6">
+                <input id="telefono" name="telefono"
+                  data-th-value="*{{telefono}}" type="text"
+                  class="form-control" placeholder="telefono"
+                  data-th-placeholder="#{label_propietario_telefono}"
+                  data-toggle="tooltip"
+                  aria-describedby="telefono" required="required" />
+                <span
+                  data-th-classappend="${#fields.hasErrors('telefono')}? 'glyphicon glyphicon-remove form-control-feedback'"
+                  class="glyphicon glyphicon-remove form-control-feedback"
+                  data-th-if="${#fields.hasErrors('telefono')}"
+                  aria-hidden="true"></span> <span id="telefono-error"
+                  class="help-block"
+                  data-th-if="${#fields.hasErrors('telefono')}"
+                  data-th-errors="*{telefono}">Mensaje de error.</span>
+              </div>
+            </div>
+          </fieldset>
+
+
+          <!-- buttons form -->
+          <div class="form-group">
+            <div class="col-md-9 col-md-offset-3">
+              <button type="submit" class="btn btn-primary"
+                data-th-text="#{label_crear}">Crear</button>
+            </div>
+          </div>
+
+        </form>
+
+
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <p>
+      <span>Copyright (c) 2017 Generalitat Valenciana - Todos los
+        derechos reservados.</span>
+    </p>
+  </footer>
+
+  <!-- Incluye el javascript propio de la vista list.html -->
+  <div data-layout-fragment="javascript">
+    <script>
+		jQuery(document).ready(function() {
+
+			/** Conversión del select de propietarios utilizando el componente
+			Select2 de la vista cliente y haciendo uso de la URL establecida por
+			parámetros data en el elemento select HTML */
+			var $select = jQuery("select");
+			$select.select2({
+				minimumResultsForSearch : Infinity,
+				ajax : {
+					data : function(params) {
+						// Definimos los nombres de los parámetros de la llamada AJAX 
+						// para que coincidan con el elemento Pageable.
+						var query = {
+							'page' : params.page - 1
+						};
+						return query;
+					}
+				}
+
+			});
+		});
+	</script>
+    
+    <script>
+    	jQuery(document).ready(function(){
+    		  // Inicializa el componente selector de fechas con un formato de
+    		  // fecha especifico
+			  jQuery(".datetimepicker").datetimepicker({format: 'd/m/Y'});
+    	});
+    </script>
+    
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html data-layout-decorate="~{layouts/simple-layout}" lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Inicio - Prototipo - Oficinajava</title>
+</head>
+<body>
+
+  <header>
+    <h1>Prototipo - Oficinajava</h1>
+  </header>
+
+  <section data-layout-fragment="content">
+    <div>
+      <h2 data-th-text="#{label_error}">Error</h2>
+      <div>
+        <p data-th-text="#{error_interno}">Se ha producido un error
+          interno.</p>
+        <p>
+          <a href="#" onclick="javascript:window.history.back();"
+            data-th-text="#{label_volver}">Volver</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+	<changeSet author="jalbors" id="01.00.01-propietarios_add_apodo">
+		<comment>Tabla de propietarios</comment>
+			<addColumn tableName="PROPIETARIOS">
+				<column name="APODO" type="java.sql.Types.VARCHAR(30)"
+					remarks="Apodo del propietario">
+					<constraints nullable="true" />
+			</column>
+		</addColumn>
+	</changeSet>
+
+	<changeSet author="jalbors" id="01.00.01">
+		<tagDatabase tag="01.00.01" />
+	</changeSet>
+
+</databaseChangeLog>

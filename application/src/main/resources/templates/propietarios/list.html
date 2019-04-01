@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html data-layout-decorate="~{layouts/bootstrap-layout}" lang="es">
+<head>
+<title
+  data-th-text="#{label_entidad_listar(#{label_propietario_plural})}">Listar
+  Propietarios - Oficinajava - Prototipo</title>
+</head>
+<body>
+
+  <header>
+    <a href="#">Valencià</a> <a href="#">Castellano</a>
+    <h1>Prototipo - Oficinajava</h1>
+  </header>
+
+  <nav>
+    <a href="list.html">Listar</a> <a href="create.html">Crear</a>
+  </nav>
+
+  <section data-layout-fragment="content">
+    <div>
+
+      <h2
+        data-th-text="#{label_entidad_listar(#{label_propietario_plural})}">Listar
+        Propietarios</h2>
+
+      <div>
+        <div data-sec-authorize="hasRole('ROLE_ADMIN')">
+          Administrador: ROLE_ADMININISTRADOR.</div>
+        <table data-th-data-load-url="@{/propietarios/dt}">
+          <thead>
+            <tr>
+              <th data-data="nombre"
+                data-th-text="#{label_propietario_nombre}">Nombre</th>
+              <th data-data="apellidos"
+                data-th-text="#{label_propietario_apellidos}">Apellidos</th>
+              <th data-data="ciudadNombre"
+                data-th-text="#{label_propietario_ciudad}">Ciudad</th>
+              <th data-data="direccion"
+                data-th-text="#{label_propietario_direccion}">Dirección</th>
+              <th data-data="telefono"
+                data-th-text="#{label_propietario_telefono}">Teléfono</th>
+              <th data-data="id" data-orderable="false"
+                data-searchable="false" class="dttools"
+                data-th-text="#{label_acciones}">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-th-each="propietario : ${propietarios}"
+              data-th-object="${propietario}">
+              <td data-th-text="*{nombre}">Nombre</td>
+              <td data-th-text="*{apellidos}">Apellidos</td>
+              <td data-th-text="*{direccion}">Dirección</td>
+              <td data-th-text="*{ciudad}">Ciudad</td>
+              <td data-th-text="*{telefono}">Telefono</td>
+              <td><a href="show.html"
+                data-th-text="#{label_mostrar}"
+                data-th-href="@{/propietarios/{id}(id=*{id})}">Mostrar</a>
+                <a href="edit.html" data-th-text="#{label_editar}"
+                data-th-href="@{/propietarios/{id}/edit-form(id=*{id})}">Editar</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <p>
+      <span>Copyright (c) 2017 Generalitat Valenciana - Todos los
+        derechos reservados.</span>
+    </p>
+  </footer>
+
+  <!-- Incluye el javascript propio de la vista list.html -->
+  <div data-layout-fragment="javascript">
+    <script>
+					
+	jQuery(document).ready(function() {
+
+		/** Conversión de la tabla de propietarios utilizando el componente
+		DataTables de la vista cliente y haciendo uso de la URL establecida por
+		parámetros data en el elemento table HTML */
+		var $table = jQuery("table");
+		$table.DataTable({
+			"serverSide" : true,
+			"searching" : false,
+			"ajax" : $table.data("load-url"),
+			"rowCallback" : function(row, data, index) {
+				// Para la 5 columna, incluye enlaces de visualización y edición
+				var showLink = '<a data-th-text="#{label_mostrar}"' 
+							  +'href="propietarios/'+data['id']+'">Mostrar</a>';
+				var editLink = '<a data-th-text="#{label_editar}"' 
+							  +'href="propietarios/'+data['id']+'/edit-form">Editar</a>';
+				jQuery(jQuery(row).find("td")[5]).html(showLink + " " + editLink);									}
+			});
+		});
+	</script>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<title>Menú - Oficinajava - Prototipo</title>
+</head>
+<body>
+
+  <!--/* Contenido incluido dentro del elemento "menu" del layout utilizando clases por defecto
+  de bootstrap. */-->
+  <nav class="navbar navbar-default navbar-static-top"
+    data-th-fragment="menu">
+
+    <div class="container">
+
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed"
+          data-toggle="collapse" data-target="#mainnav"
+          aria-expanded="false">
+          <span class="sr-only">Menu</span> <span class="icon-bar"></span>
+          <span class="icon-bar"></span> <span class="icon-bar"></span>
+        </button>
+
+        <!-- Name application -->
+        <div class="application-name navbar-brand hidden-xs">
+          <a data-th-title="#{label_aplicacion_titulo}"
+            data-th-text="#{label_aplicacion_titulo}" href="/"
+            data-th-href="@{/}">Prototipo</a>
+        </div>
+
+      </div>
+      <!-- /navbar-header -->
+
+      <div id="mainnav" class="navbar-collapse collapse">
+
+        <ul class="nav navbar-nav" id="entitiesMenuEntries">
+
+          <!-- PROPIETARIOS -->
+          <li class="dropdown" id="entrada-propietario"><a href="#"
+            class="dropdown-toggle" data-toggle="dropdown" role="button"
+            aria-haspopup="true" aria-expanded="false"
+            data-th-utext="#{label_propietario_plural} + ' <span class=\'caret\'></span>'">Propietario<span
+              class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="/propietarios"
+                data-th-href="@{/propietarios}"
+                data-th-utext="#{label_listar}">Listar Propietario</a></li>
+              <li><a href="/propietarios/create-form"
+                data-th-href="@{/propietarios/create-form}"
+                data-th-utext="#{label_crear}">Crear Propietario</a></li>
+
+            </ul></li>
+          </ul>
+
+        <!-- Selector de idioma -->
+        <ul class="nav navbar-nav navbar-right upper-nav">
+          <li>
+            <ul data-th-replace="~{fragments/bootstrap-languages :: languages}">
+              <!-- Contenido reemplazado por el contenido de language.html -->
+              <span>Español</span>
+            </ul>
+          </li>
+          <li class="nav navbar-nav navbar-right upper-nav"
+            data-sec-authorize="isAuthenticated()"><a
+              data-th-if="${@environment.getProperty('gvlogin.disabled', 'false') == 'false'}"
+              data-th-href="@{${@logoutUrl}}">
+              <span class="glyphicon glyphicon-log-out"></span>
+            </a> 
+
+            <a
+              data-th-if="${@environment.getProperty('gvlogin.disabled', 'false') == 'true'}"
+              href="#"
+              onClick="javascript:document.getElementById('logout').submit();">
+              <span class="glyphicon glyphicon-log-out"></span>
+            </a> 
+            </li>
+        </ul>
+
+        <form class="form-inline"
+          data-th-if="${@environment.getProperty('gvlogin.disabled', 'false') == 'true'}"
+          data-th-action="@{/logout}" method="post" id="logout"></form>
+
+      </div>
+
+    </div>
+  </nav>
+
+</body>
+</html>
+<!-- end::bootstrapMenu[] -->

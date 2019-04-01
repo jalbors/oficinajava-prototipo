@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Recarga de la configuración en caliente -->
+<configuration scan="true" scanPeriod="300 seconds">
+
+  <!-- Se desactiva el log por defecto de Spring Boot por consola, 
+    dejando sólo los de archivo. La ubicación del archivo se configura con
+    la propiedad "logging.file" del fichero "application.properties". -->
+  <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+  
+  <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+  
+    <!-- Patrón de los mensajes de log y mostrar parametros consultas QueryDSL -->
+    <encoder>
+      <Pattern>
+        %d{dd-MM-yyyy HH:mm:ss} [%-5p] [e=%X{TPIC.invocationId}] [%X{querydsl.parameters}] - %m%n
+      </Pattern>
+    </encoder>
+    
+    <file>${LOG_FILE}.log</file>      
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+
+      <!-- Rotación diaria -->
+      <fileNamePattern>${LOG_FILE}-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+      <timeBasedFileNamingAndTriggeringPolicy
+        class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+
+        <!-- o si el archivo llega a 100MB de tamaño -->
+        <maxFileSize>100MB</maxFileSize>
+      </timeBasedFileNamingAndTriggeringPolicy>
+      
+    </rollingPolicy>
+    
+  </appender>
+  
+  <!-- Nivel de log por defecto -->
+  <root level="INFO">
+    <appender-ref ref="FILE" />
+  </root>
+
+  <!-- Nivel de log del paquete base de la aplicación -->
+  <logger name="es.gva.oficinajava.prototipo" level="DEBUG" />
+
+  <!-- Activar log de las consultas JPA generadas por QueryDSL -->
+  <logger name="com.querydsl.jpa.impl.JPAQuery" level="DEBUG" />
+
+  <!-- Activar log de las estadísticas de Hibernate -->
+  <logger name="org.hibernate.stat" level="DEBUG" />
+  
+</configuration>

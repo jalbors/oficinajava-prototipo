@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>es.gva.oficinajava</groupId>
+    <artifactId>oficinajava-prototipo</artifactId>
+    <version>01.00.00-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>oficinajava-prototipo-service-api</artifactId>
+
+  <packaging>jar</packaging>
+
+  <name>Oficinajava Prototipo - API de los servicios</name>
+  <description>Módulo API servicios proyecto Oficinajava Prototipo</description>
+
+  <dependencies>
+
+    <dependency>
+      <groupId>es.gva.oficinajava</groupId>
+      <artifactId>oficinajava-prototipo-model</artifactId>
+      <version>${project.version}</version>
+      <scope>compile</scope>
+    </dependency>
+
+    <!-- Necesario el tipo Page en las operaciones paginadas -->
+    <dependency>
+      <groupId>org.springframework.data</groupId>
+      <artifactId>spring-data-commons</artifactId>
+      <scope>compile</scope>
+    </dependency>
+
+  </dependencies>
+
+</project>

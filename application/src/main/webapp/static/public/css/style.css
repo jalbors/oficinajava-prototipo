@@ -1,0 +1,23 @@
+html {
+  background-color: gray;
+}
+
+.z-label {
+  font-size: .9em;
+}
+
+.z-window {
+  background: gray;
+}
+
+.z-grid {
+  border: 1px solid black;
+}
+
+.z-button {
+  min-height: 20px;
+}
+
+.z-textbox {
+  margin: 1px;
+}

@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Application-Name: oficinajava
+Implementation-Title: Oficinajava Prototipo - Aplicaciￃﾳn
+Implementation-Version: 01.00.00-SNAPSHOT
+Built-By: jalbors
+Implementation-Vendor-Id: es.gva.oficinajava
+Implementation-Vendor: DGTIC
+Dependencies: org.hibernate org.hibernate.validator
+Web-Application-Version: 01.00.00-SNAPSHOT
+Component-Name: prototipo
+Web-Application-SVN: http://subversion.gva.es/svn/oficinajava/prototip
+ o
+Build-Jdk: 1.8.0_162
+Implementation-URL: oficinajava/oficinajava-prototipo/oficinajava-prot
+ otipo-application
+Created-By: Maven Integration for Eclipse
+

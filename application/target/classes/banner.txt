@@ -1,0 +1,6 @@
+
+=========================================================================
+DIRECCION GENERAL DE TECNOLOGIAS DE LA INFORMACION Y LA COMUNICACION
+APLICACION: oficinajava-prototipo-application
+(Basada en Spring Boot ${spring-boot.formatted-version})
+=========================================================================

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html data-layout-decorate="~{layouts/bootstrap-layout}" lang="es">
+<head>
+<title>Informacion</title>
+
+</head>
+<body>
+	<section data-layout-fragment="content">
+		<div>
+			<div>
+				<div data-sec-authorize="hasRole('ROLE_ADMIN')">
+					4DM1N1N1STR4D8R.</div>
+					<br>
+				<table data-th-data-load-url="@{/propietarios/dt}">
+					<thead>
+						<tr>
+							<th data-data="nombre" data-th-text="#{label_propietario_nombre}">hola</th>
+							<th data-data="id" data-orderable="false" data-searchable="false"
+								class="dttools" data-th-text="#{label_acciones}">Acciones</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr data-th-each="propietario : ${propietarios}">
+							<td data-th-text="${propietario.nombre}">Nombre</td>
+							<td><a href="show.html" data-th-text="#{label_mostrar}"
+								data-th-href="@{/propietarios/{id}(id=*{id})}">Mostrar</a> <a
+								href="edit.html" data-th-text="#{label_editar}"
+								data-th-href="@{/propietarios/{id}/edit-form(id=*{id})}">Editar</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</section>
+	
+	<footer>
+		<p>
+			<span>Copyright (c) 2017 Generalitat Valenciana - Todos los
+				derechos reservados.</span>
+		</p>
+	</footer>
+
+</body>
+</html>

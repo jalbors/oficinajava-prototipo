@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cabecera de página - Oficinajava - Prototipo</title>
+</head>
+<body>
+
+  <header data-th-fragment="header">
+
+    <!-- Cambio de idioma -->
+    <a href="?lang=ca" data-th-text="#{label_idioma_valenciano}">Valencià</a>
+    <a href="?lang=es" data-th-text="#{label_idioma_castellano}">Castellano</a>
+
+    <!-- Formulario que permite realizar logout en la aplicación -->
+    <form data-th-if="${@environment.getProperty('gvlogin.disabled', 'false') == 'true'}"
+      data-th-action="@{/logout}" method="post" id="logout">
+      <a href="#"
+        onClick="javascript:document.getElementById('logout').submit();"
+        data-th-text="#{label_salir}">Salir</a>
+    </form>
+
+    <!-- Enlace que permite realizar logout en la aplicación -->
+    <a data-th-if="${@environment.getProperty('gvlogin.disabled', 'false') == 'false'}"
+      data-th-href="@{${@logoutUrl}}">Salir</a>
+
+    <h1 data-th-text="#{label_aplicacion_titulo}">Prototipo - Oficinajava</h1>
+
+  </header>
+
+</body>
+</html>

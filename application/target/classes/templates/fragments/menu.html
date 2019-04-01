@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pie de página - Oficinajava - Prototipo</title>
+</head>
+<body>
+
+  <!--/* Contenido incluido dentro del elemento "menu" del layout */-->
+  <nav data-th-fragment="menu">
+  
+    <!-- Enlaces a listar y crear -->
+    <a href="list.html" data-th-href="@{/visitas}"
+      data-th-text="#{label_listar}">Listar</a>
+    <a href="create.html"
+      data-th-href="@{/visitas/create-form}"
+      data-th-value="#{label_crear}">Crear</a>
+      
+  </nav>
+
+</body>
+</html>

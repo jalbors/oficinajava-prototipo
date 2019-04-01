@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+
+  <!-- Creación de tablas, relaciones y secuencias -->
+
+  <changeSet author="jrcasanya" id="01.00.00-tipos">
+    <comment>Tabla de los tipos de mascotas</comment>
+    <createTable tableName="TIPOS">
+      <column name="ID" type="BIGINT" remarks="Identificador">
+        <constraints nullable="false" primaryKey="true"
+          primaryKeyName="TIPOS_PK" />
+      </column>
+      <column name="NOMBRE" type="java.sql.Types.VARCHAR(80)"
+          remarks="Nombre del tipo de mascota">
+        <constraints nullable="false" />
+      </column>
+      <column name="VERSION" type="BIGINT"
+        remarks="Version para el control de concurrencia optimista" />
+    </createTable>
+    <createSequence sequenceName="TIPOS_ID_SEQ" startValue="1"
+      incrementBy="50" />
+  </changeSet>
+
+  
+  <changeSet author="jcgarcia" id="01.00.00-ciudades">
+    <comment>Tabla de ciudades</comment>
+    <createTable tableName="CIUDADES">
+      <column name="ID" type="BIGINT" remarks="Identificador">
+        <constraints nullable="false" primaryKey="true"
+          primaryKeyName="CIUDADES_PK" />
+      </column>
+      <column name="NOMBRE" type="java.sql.Types.VARCHAR(30)" remarks="Nombre del propietario">
+        <constraints nullable="false" />
+      </column>
+      <column name="VERSION" type="BIGINT"
+        remarks="Version para el control de concurrencia optimista" />
+    </createTable>
+    <createSequence sequenceName="CIUDADES_ID_SEQ"
+      startValue="1" incrementBy="50" />
+  </changeSet>
+
+  <changeSet author="jrcasanya" id="01.00.00-propietarios">
+    <comment>Tabla de propietarios</comment>
+    <createTable tableName="PROPIETARIOS">
+      <column name="ID" type="BIGINT" remarks="Identificador">
+        <constraints nullable="false" primaryKey="true"
+          primaryKeyName="PROPIETARIOS_PK" />
+      </column>
+      <column name="NOMBRE" type="java.sql.Types.VARCHAR(30)" remarks="Nombre del propietario">
+        <constraints nullable="false" />
+      </column>
+      <column name="APELLIDOS" type="java.sql.Types.VARCHAR(30)" remarks="Apellidos del propietario">
+        <constraints nullable="false" />
+      </column>
+      <column name="FECHA_NACIMIENTO" type="java.sql.Types.DATE"
+        remarks="Fecha de nacimiento del propietario">
+        <constraints nullable="false" />
+      </column>
+      <column name="DIRECCION" type="java.sql.Types.VARCHAR(255)"
+        remarks="Direccion del propietario">
+        <constraints nullable="false" />
+      </column>
+      <column name="CIUDAD_ID" type="BIGINT" remarks="Ciudad del propietario">
+        <constraints nullable="false" />
+      </column>
+      <column name="TELEFONO" type="java.sql.Types.VARCHAR(20)" remarks="Telefono del propietario">
+        <constraints nullable="false" />
+      </column>
+      <column name="VERSION" type="BIGINT"
+        remarks="Version para el control de concurrencia optimista" />
+    </createTable>
+    <createSequence sequenceName="PROPIETARIOS_ID_SEQ"
+      startValue="1" incrementBy="50" />
+  </changeSet>
+
+  <changeSet author="jrcasanya" id="01.00.00-mascotas">
+    <comment>Tabla de mascotas</comment>
+    <createTable tableName="MASCOTAS">
+      <column name="ID" type="BIGINT" remarks="Identificador">
+        <constraints nullable="false" primaryKey="true"
+          primaryKeyName="MASCOTAS_PK" />
+      </column>
+      <column name="NOMBRE" type="java.sql.Types.VARCHAR(30)" remarks="Nombre de la mascota">
+        <constraints nullable="false" />
+      </column>
+      <column name="FECHA_NACIMIENTO" type="java.sql.Types.DATE"
+        remarks="Fecha de nacimiento de la mascota">
+        <constraints nullable="false" />
+      </column>
+      <column name="FECHA_FALLECIMIENTO" type="java.sql.Types.DATE"
+        remarks="Fecha de fallecimiento de la mascota">
+        <constraints nullable="true" />
+      </column>
+      <column name="TIPO_ID" type="BIGINT" remarks="Tipo de mascota">
+        <constraints nullable="false" />
+      </column>
+      <column name="PROPIETARIO_ID" type="BIGINT" remarks="Propietario de la mascota">
+        <constraints nullable="false" />
+      </column>
+      <column name="ESTADO" type="java.sql.Types.VARCHAR(20)"
+        remarks="Estado en el que se encuentra la mascota">
+        <constraints nullable="false" />
+      </column>
+      <column name="VERSION" type="BIGINT"
+        remarks="Version para el control de concurrencia optimista" />
+    </createTable>
+    <createSequence sequenceName="MASCOTAS_ID_SEQ" startValue="1"
+      incrementBy="50" />
+  </changeSet>
+
+  <changeSet author="jrcasanya" id="01.00.00-mascota_tipos_fk">
+    <comment>Clave ajena de la tabla MASCOTAS a la tabla TIPOS</comment>
+    <addForeignKeyConstraint baseColumnNames="TIPO_ID"
+      baseTableName="MASCOTAS" constraintName="MASCOTAS_TIPOS_FK"
+      referencedColumnNames="ID" referencedTableName="TIPOS" />
+  </changeSet>
+
+  <changeSet author="jrcasanya" id="01.00.00-mascota_propietario_fk">
+    <comment>Clave ajena de la tabla MASCOTAS a la tabla PROPIETARIOS</comment>
+    <addForeignKeyConstraint baseColumnNames="PROPIETARIO_ID"
+      baseTableName="MASCOTAS" constraintName="MASCOTAS_PROPIETARIOS_FK"
+      referencedColumnNames="ID" referencedTableName="PROPIETARIOS" />
+  </changeSet>
+
+  <changeSet author="jrcasanya" id="01.00.00-visitas">
+    <comment>Tabla de visitas</comment>
+    <createTable tableName="VISITAS">
+      <column name="ID" type="BIGINT" remarks="Identificador">
+        <constraints nullable="false" primaryKey="true"
+          primaryKeyName="VISITAS_PK" />
+      </column>
+      <column name="MASCOTA_ID" type="BIGINT" remarks="Identificador de la mascota">
+        <constraints nullable="false" />
+      </column>
+      <column name="FECHA_VISITA" type="java.sql.Types.DATE" remarks="Fecha de la visita">
+        <constraints nullable="false" />
+      </column>
+      <column name="DESCRIPCION" type="java.sql.Types.VARCHAR(255)"
+        remarks="Descripción de la visita">
+        <constraints nullable="false" />
+      </column>
+      <column name="ESTADO" type="java.sql.Types.VARCHAR(20)"
+        remarks="Estado en el que se encuentra la visita">
+        <constraints nullable="false" />
+      </column>
+      <column name="FECHA_CIERRE" type="java.sql.Types.DATE" remarks="Fecha de cierre de la visita">
+        <constraints nullable="true" />
+      </column>
+      <column name="VERSION" type="BIGINT"
+        remarks="Version para el control de concurrencia optimista" />
+    </createTable>
+    <createSequence sequenceName="VISITAS_ID_SEQ" startValue="1"
+      incrementBy="50" />
+  </changeSet>
+
+  <changeSet author="jrcasanya" id="01.00.00-visita_mascota_fk">
+    <comment>Clave ajena de la tabla VISTS a la tabla MASCOTAS</comment>
+    <addForeignKeyConstraint baseColumnNames="MASCOTA_ID"
+      baseTableName="VISITAS" constraintName="VISITAS_MASCOTAS_FK"
+      referencedColumnNames="ID" referencedTableName="MASCOTAS" />
+  </changeSet>
+
+  <!-- Creación de índices -->
+
+
+  <changeSet author="dcervera" id="01.00.00-idx_tipo_nombre">
+    <createIndex indexName="TIPOS_NOMBRE_IDX" tableName="TIPOS"
+      unique="true">
+      <column name="NOMBRE" type="java.sql.Types.VARCHAR(80)" />
+    </createIndex>
+  </changeSet>
+
+  <changeSet author="dcervera" id="01.00.00-idx_propietarios_apellidos">
+    <createIndex indexName="PROPIETARIOS_APELLIDOS_IDX" tableName="PROPIETARIOS"
+      unique="false">
+      <column name="APELLIDOS" type="java.sql.Types.VARCHAR(30)" />
+    </createIndex>
+  </changeSet>
+
+  <changeSet author="dcervera" id="01.00.00-idx_mascotas_nombre">
+    <createIndex indexName="MASCOTAS_NOMBRE_IDX" tableName="MASCOTAS"
+      unique="false">
+      <column name="NOMBRE" type="java.sql.Types.VARCHAR(30)" />
+    </createIndex>
+  </changeSet>
+
+  <changeSet author="dcervera" id="01.00.00-idx_visitas_mascota_id">
+    <createIndex indexName="VISITAS_MASCOTA_ID_IDX" tableName="VISITAS"
+      unique="false">
+      <column name="MASCOTA_ID" type="INTEGER" />
+    </createIndex>
+  </changeSet>
+
+  <!-- Creación de procedimientos almacenados -->
+
+  <changeSet author="mmartinez" id="01.00.00-find_edad" runOnChange="true">
+    <comment>Procedimiento que devuelve la edad a partir de una fecha de nacimiento</comment>
+    <sql dbms="hsqldb">DROP PROCEDURE IF EXISTS PRC_FIND_EDAD</sql>
+    <createProcedure dbms="hsqldb" procedureName="PRC_FIND_EDAD">
+      CREATE
+      PROCEDURE PRC_FIND_EDAD(IN anyoNacimiento int,IN mesNacimiento int, IN
+      diaNacimiento int, OUT age int)
+      BEGIN ATOMIC
+      DECLARE years,month,day INT;
+      SET years = extract(year from current_date) - anyoNacimiento;
+      IF years >
+      0
+      THEN
+      SET age = 0;
+      END IF;
+      SET month = extract(month from current_date);
+      SET
+      day = extract(day from current_date);
+      IF
+      mesNacimiento > month THEN
+      SET age =
+      years -1;
+      END IF;
+      IF month =
+      mesNacimiento THEN
+      IF diaNacimiento > day THEN
+      SET age = years - 1;
+      END IF;
+      END IF;
+      END
+    </createProcedure>
+    <createProcedure dbms="oracle" procedureName="PRC_FIND_EDAD">
+      CREATE OR REPLACE
+      PROCEDURE PRC_FIND_EDAD(anyoNacimiento IN int, mesNacimiento IN int, 
+      diaNacimiento IN int, age OUT int) IS
+      years INT;
+      month INT;
+      day INT;
+      BEGIN 
+      years := extract(year from current_date) - anyoNacimiento;
+      IF years >
+      0
+      THEN
+      age := 0;
+      END IF;
+      month := extract(month from current_date);
+      day := extract(day from current_date);
+      IF
+      mesNacimiento > month THEN
+      age := years -1;
+      END IF;
+      IF month =
+      mesNacimiento THEN
+      IF diaNacimiento > day THEN
+      age := years - 1;
+      END IF;
+      END IF;
+      END;
+    </createProcedure>
+    <createProcedure dbms="postgresql" procedureName="PRC_FIND_EDAD">
+      CREATE OR REPLACE FUNCTION PRC_FIND_EDAD(anyoNacimiento integer,
+      mesNacimiento integer, diaNacimiento integer)
+      RETURNS integer AS $$
+      DECLARE
+      age integer;
+      DECLARE month integer;
+      DECLARE day integer;
+      BEGIN
+      age :=
+      date_part('year', CURRENT_DATE) - anyoNacimiento;
+
+      IF 0 > age THEN
+      RETURN
+      0;
+      END IF;
+
+      month := date_part('month', CURRENT_DATE);
+      day :=
+      date_part('day', CURRENT_DATE);
+      IF mesNacimiento > month THEN
+      RETURN
+      age -1;
+      END IF;
+      IF month = mesNacimiento THEN
+      IF diaNacimiento > day THEN
+      RETURN age - 1;
+      END IF;
+      END IF;
+
+      RETURN age;
+      END;
+      $$ LANGUAGE plpgsql;
+    </createProcedure>
+    <rollback>
+      <dropProcedure procedureName="PRC_FIND_EDAD" />
+    </rollback>
+  </changeSet>
+
+
+  <!-- Datos iniciales necesarios -->
+
+  <changeSet author="dcervera" id="01.00.00-carga_datos_iniciales">
+    <comment>Carga de los datos iniciales</comment>
+    <loadData tableName="TIPOS" file="data/tipos.csv"
+      relativeToChangelogFile="true" />
+    <loadData tableName="CIUDADES" file="data/ciudades.csv"
+      relativeToChangelogFile="true" />
+    <rollback>
+      <delete tableName="TIPOS" />
+    </rollback>
+  </changeSet>
+
+  <changeSet author="dcervera" id="01.00.00-datos_iniciales_recrear_secuencias">
+    <comment>Recrea las secuencias para que no colisionen con los nuevos registros creados</comment>
+    <dropSequence sequenceName="TIPOS_ID_SEQ" />
+    <createSequence sequenceName="TIPOS_ID_SEQ" startValue="100"
+      incrementBy="50" />
+    <dropSequence sequenceName="CIUDADES_ID_SEQ" />
+    <createSequence sequenceName="CIUDADES_ID_SEQ"
+      startValue="100" incrementBy="50" />
+    <rollback>
+      <dropSequence sequenceName="TIPOS_ID_SEQ" />
+      <createSequence sequenceName="TIPOS_ID_SEQ" startValue="1"
+        incrementBy="50" />
+      <dropSequence sequenceName="CIUDADES_ID_SEQ" />
+      <createSequence sequenceName="CIUDADES_ID_SEQ"
+        startValue="1" incrementBy="50" />
+    </rollback>
+  </changeSet>
+
+  
+  <!-- Concesión de permisos para los objetos creados -->
+  <changeSet author="jrcasanya" id="01.00.00-oracle-grants" dbms="oracle">
+    <sqlFile encoding="utf8"
+      path="src/main/liquibase/sql/01.00.00-oracle-grants.sql"
+      splitStatements="true" stripComments="true" />
+    <rollback>
+      <sqlFile encoding="utf8"
+        path="src/main/liquibase/sql/01.00.00-oracle-grants-rollback.sql"
+        splitStatements="true" stripComments="true" />
+    </rollback>
+  </changeSet>
+
+  <!-- Etiqueta los cambios anteriores con el número de versión de la aplicación -->
+
+  <changeSet author="mmartinez" id="01.00.00">
+    <tagDatabase tag="01.00.00" />
+  </changeSet>
+
+
+</databaseChangeLog>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Languages</title>
+</head>
+<body id="body">
+  <!--/* Contenido incluido dentro del elemento "menu" del layout utilizando clases por defecto
+	de bootstrap. */-->
+  <ul data-th-fragment="languages"
+    class="nav navbar-nav navbar-right upper-nav languages">
+    <!-- Language -->
+    <li class="dropdown"><a class="dropdown-toggle"
+      data-toggle="dropdown" role="button" aria-haspopup="true"
+      aria-expanded="false"> <span class="glyphicon glyphicon-globe"
+        aria-hidden="true"></span>&nbsp; <span class="hidden-sm"
+        data-th-text="#{label_idioma}">Idioma </span><span class="caret"></span>
+    </a>
+      <ul class="dropdown-menu" id="languageFlags">
+        <li id="caFlag"><a href="?lang=ca"> <span
+            data-th-text="#{label_idioma_valenciano}"> Valenciano</span>
+        </a></li>
+        <li id="esFlag"><a href="?lang=es"> <span
+            data-th-text="#{label_idioma_castellano}"> Castellano</span>
+        </a></li>
+      </ul></li>
+  </ul>
+
+</body>
+</html>
+<!-- end::bootstrapLanguages[] -->

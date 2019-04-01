@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>es.gva.oficinajava</groupId>
+    <artifactId>oficinajava-prototipo</artifactId>
+    <version>01.00.00-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>oficinajava-prototipo-service-impl</artifactId>
+
+  <packaging>jar</packaging>
+
+  <name>Oficinajava Prototipo - Impl. de los servicios</name>
+  <description>Módulo implementación servicios proyecto Oficinajava Prototipo</description>
+
+  <dependencies>
+
+    <dependency>
+      <groupId>es.gva.oficinajava</groupId>
+      <artifactId>oficinajava-prototipo-model</artifactId>
+      <version>${project.version}</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>es.gva.oficinajava</groupId>
+      <artifactId>oficinajava-prototipo-repository</artifactId>
+      <version>${project.version}</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>es.gva.oficinajava</groupId>
+      <artifactId>oficinajava-prototipo-service-api</artifactId>
+      <version>${project.version}</version>
+      <scope>compile</scope>
+    </dependency>
+
+    <!-- TODO Documentar las siguientes dependencias -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-beans</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.data</groupId>
+      <artifactId>spring-data-commons</artifactId>
+      <scope>compile</scope>
+    </dependency>
+
+    <!-- Gestión de la transaccionalidad de las operaciones -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-tx</artifactId>
+      <scope>compile</scope>
+    </dependency>
+
+    <!-- Autoconfiguración de las pruebas -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+    </dependency>
+
+  </dependencies>
+
+</project>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jboss-web>
+  <context-root>oficinajava-prototipo-application</context-root>
+
+  <session-config>
+    <!-- Timeout de la sesion en minutos -->
+    <session-timeout>5</session-timeout>
+  </session-config>
+</jboss-web>

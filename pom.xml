@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>es.gva.dgtic</groupId>
+    <artifactId>super-pom</artifactId>
+    <version>03.00.01-SNAPSHOT</version>
+  </parent>
+
+  <groupId>es.gva.oficinajava</groupId>
+  <artifactId>oficinajava-prototipo</artifactId>
+  <version>01.00.00-SNAPSHOT</version>
+
+  <packaging>pom</packaging>
+
+  <name>Oficinajava Prototipo</name>
+  <description>Oficinajava Prototipo</description>
+
+  <properties>
+
+    <!-- Identificador de la aplicación y el componente (CIs) -->
+    <application.name>oficinajava</application.name>
+    <component.name>prototipo</component.name>
+
+    <archetype.version>03.00.01-SNAPSHOT</archetype.version>
+  </properties>
+
+    <modules>
+    <module>model</module>
+    <module>repository</module>
+    <module>service-api</module>
+    <module>service-impl</module>
+    <module>application</module>
+  </modules>
+</project>

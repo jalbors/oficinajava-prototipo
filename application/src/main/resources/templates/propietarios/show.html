@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html data-layout-decorate="~{layouts/bootstrap-layout}" lang="es">
+<head>
+<title data-th-text="#{label_entidad_mostrar(#{label_propietario})}">Mostrar
+  Propietario- Oficinajava - Prototipo</title>
+</head>
+<body>
+
+  <header>
+    <a href="#">Valencià</a> <a href="#">Castellano</a>
+    <h1>Prototipo - Oficinajava</h1>
+  </header>
+
+  <nav>
+    <a href="list.html">Listar</a> <a href="create.html">Crear</a>
+  </nav>
+
+  <section data-layout-fragment="content"
+    data-th-object="${propietario}">
+    <div>
+
+      <h2 data-th-text="#{label_entidad_mostrar(#{label_propietario})}">Mostrar
+        Propietario</h2>
+
+      <ul>
+        <li><strong data-th-text="#{label_propietario_nombre}">Nombre</strong>:
+          <span data-th-text="*{{nombre}}">nombre</span></li>
+      </ul>
+      <ul>
+        <li><strong data-th-text="#{label_propietario_apellidos}">Apellidos</strong>:
+          <span data-th-text="*{{apellidos}}">Apellidos</span></li>
+      </ul>
+
+      <ul>
+        <li><strong data-th-text="#{label_propietario_ciudad}">Ciudad</strong>:
+          <span data-th-text="*{{ciudad}}">Ciudad</span></li>
+      </ul>
+
+      <ul>
+        <li><strong data-th-text="#{label_propietario_direccion}">Dirección</strong>:
+          <span data-th-text="*{{direccion}}">Direccion</span></li>
+      </ul>
+      <ul>
+        <li><strong data-th-text="#{label_propietario_telefono}">Teléfono</strong>:
+          <span data-th-text="*{{telefono}}">Teléfono</span></li>
+      </ul>
+      <ul>
+        <li><strong data-th-text="#{label_propietario_apodo}">Apodo</strong>:
+          <span data-th-text="*{{apodo}}">Apodo</span></li>
+      </ul>
+
+    </div>
+  </section>
+
+  <footer>
+    <p>
+      <span>Copyright (c) 2017 Generalitat Valenciana - Todos los
+        derechos reservados.</span>
+    </p>
+  </footer>
+
+</body>
+</html>

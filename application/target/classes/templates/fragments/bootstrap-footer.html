@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<title>Pie de página - Oficinajava - Prototipo</title>
+</head>
+<body>
+
+  <!--/* Contenido incluido dentro del elemento "footer" del layout */-->
+  <footer class="container" data-th-fragment="footer">
+    <p>
+      <!-- Derechos de autor  -->
+      <span data-th-text="#{label_aplicacion_pie}">Copyright (c)
+        2017 Generalitat Valenciana - Todos los derechos reservados.</span>
+    </p>
+
+    <div data-th-if="${session.cookies_aceptadas == null}" id="cookies" class="container">
+      <nav class="navbar navbar-default navbar-fixed-bottom">
+
+        <div class="container">
+          <div class="navbar-inner navbar-content-center"
+            id="mensaje-cookies">
+
+            <a data-th-href="@{/cookies/accept}" class="btn btn-default pull-right">Cerrar</a>
+            <p class="text-muted credit">
+              Este sitio web utiliza cookies para que tengas una mejor 
+              experiencia de usuario. Si continúas navegando en esta página, 
+              consideramos que aceptas su uso en los términos indicados en la 
+              <a data-th-href="@{/cookies}"> Política de Cookies</a>.
+            </p>
+            <br>
+
+          </div>
+        </div>
+
+      </nav>
+    </div>
+
+  </footer>
+
+</body>
+</html>
+<!-- end::bootstrapFooter[] -->

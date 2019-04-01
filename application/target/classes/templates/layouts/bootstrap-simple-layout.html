@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html data-th-lang="${#locale}" lang="es">
+<head>
+<meta charset="UTF-8" />
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<title data-layout-title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE"
+  data-th-text="#{label_aplicacion_titulo}">Título de la pagina
+  - Oficinajava - Prototipo</title>
+
+<link rel="stylesheet" type="text/css"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css"
+  data-th-href="@{/webjars/bootstrap/3.3.7/dist/css/bootstrap.css}" />
+
+</head>
+<body>
+
+  <div class="container bg-container">
+    <!-- CONTENT -->
+    <section data-layout-fragment="content">
+      <!-- Contenido reemplazado por el .html de la página que se está visualizando -->
+      <h2>Listar elemento</h2>
+      <p>Ejemplo</p>
+    </section>
+    <!-- /CONTENT -->
+  </div>
+
+  <!-- JavaScript
+     ================================================== -->
+  <!-- Código Javascript al final de la página para agilizar la carga -->
+  
+  <script type="text/javascript" charset="utf-8"
+    src="https://code.jquery.com/jquery-1.12.4.js"
+    data-th-src="@{/webjars/jquery/1.12.4/dist/jquery.js}"></script>
+
+  <script type="text/javascript"
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"
+    data-th-src="@{/webjars/bootstrap/3.3.7/dist/js/bootstrap.js}"></script>
+
+  <div data-layout-fragment="javascript">
+    <!-- Fragmento que incluirá el contenido propio de cada página -->
+  </div>
+
+</body>
+</html>

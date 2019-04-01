@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>es.gva.oficinajava</groupId>
+    <artifactId>oficinajava-prototipo</artifactId>
+    <version>01.00.00-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>oficinajava-prototipo-application</artifactId>
+
+  <packaging>war</packaging>
+
+  <name>Oficinajava Prototipo - Aplicación</name>
+  <description>Módulo aplicación proyecto Oficinajava Prototipo</description>
+
+  <dependencies>
+
+    <!-- Otros módulos del proyecto necesarios -->
+
+    <dependency>
+      <groupId>es.gva.oficinajava</groupId>
+      <artifactId>oficinajava-prototipo-model</artifactId>
+      <version>${project.version}</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>es.gva.oficinajava</groupId>
+      <artifactId>oficinajava-prototipo-service-api</artifactId>
+      <version>${project.version}</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>es.gva.oficinajava</groupId>
+      <artifactId>oficinajava-prototipo-service-impl</artifactId>
+      <version>${project.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+
+    <!-- Añadir las funcionalidades de aplicaciones Spring -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter</artifactId>
+    </dependency>
+
+    <!-- Añadir las funcionalidades de aplicaciones web Spring -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+
+    <!-- Añadir las funcionalidades de Spring Data JPA -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>
+
+    <!-- Utilidades de desarrollo -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-devtools</artifactId>
+    </dependency>
+
+    <!-- Base de datos Hypersonic para desarrollo local -->
+    <dependency>
+      <groupId>org.hsqldb</groupId>
+      <artifactId>hsqldb</artifactId>
+    </dependency>
+
+    <!-- Dependencias de base de datos Oracle y PostgreSQL -->
+    <!-- Solo necesarias si se utilizan en el entorno local de desarrollo -->
+    <dependency>
+      <groupId>com.oracle</groupId>
+      <artifactId>ojdbc8</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+    </dependency>
+
+    <!-- Dependencias base utilizadas en los fuentes del módulo -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-autoconfigure</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-web</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-beans</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <scope>compile</scope>
+    </dependency>
+
+    <!-- Configuración base del sistema de caché -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-cache</artifactId>
+    </dependency>
+
+    <!-- Implementación del sistema de caché a utilizar -->
+    <dependency>
+      <groupId>com.github.ben-manes.caffeine</groupId>
+      <artifactId>caffeine</artifactId>
+    </dependency>
+
+    <!-- Dependencia de Spring Web utilizada en los fuentes del módulo -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+      <scope>compile</scope>
+    </dependency>
+
+    <!-- Trazabilidad de peticiones en Spring MVC -->
+    <dependency>
+      <groupId>io.tracee.binding</groupId>
+      <artifactId>tracee-springmvc</artifactId>
+      <scope>compile</scope>
+    </dependency>
+
+    <!-- Dependencia de la excepción de bloqueo optimista -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-orm</artifactId>
+      <scope>compile</scope>
+    </dependency>
+
+    <!-- Autoconfiguración del sistema de plantillas -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-thymeleaf</artifactId>
+    </dependency>
+
+    <!-- Dialecto del sistema de plantillas a utilizar -->
+    <dependency>
+      <groupId>nz.net.ultraq.thymeleaf</groupId>
+      <artifactId>thymeleaf-layout-dialect</artifactId>
+    </dependency>
+
+    <!-- Webjars -->
+
+    <dependency>
+      <groupId>org.webjars.bower</groupId>
+      <artifactId>jquery</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.webjars.bower</groupId>
+      <artifactId>bootstrap</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.webjars.bower</groupId>
+      <artifactId>datatables</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.webjars.bower</groupId>
+      <artifactId>select2</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.webjars.bower</groupId>
+      <artifactId>datetimepicker</artifactId>
+    </dependency>
+
+    <!-- Integración de la seguridad en Spring y configuración base -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-security</artifactId>
+    </dependency>
+
+    <!-- Dependencias de seguridad utilizadas en los fuentes del módulo -->
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-core</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-config</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-web</artifactId>
+      <scope>compile</scope>
+    </dependency>
+
+    <!-- Cliente Spring del servicio de autenticación y autorización -->
+    <dependency>
+      <groupId>es.gva.gvlogin</groupId>
+      <artifactId>gvlogin-sso-addon</artifactId>
+      <scope>compile</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.thymeleaf.extras</groupId>
+      <artifactId>thymeleaf-extras-springsecurity4</artifactId>
+    </dependency>
+
+    <!-- Autoconfiguración de las pruebas -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <plugins>
+
+      <!-- Herramientas de desarrollo en local -->
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+
+      <!-- Configurar el empaquetado de la aplicación -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+      </plugin>
+
+      <!-- Desempaqueta los Webjars -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>unpack_webjars</id>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- Empaquetado de los recursos web estáticos -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>prepare_static_resources_package</id>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- Ejecutar los tests de integración con sufijo IT -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-failsafe-plugin</artifactId>
+      </plugin>
+
+      <!-- Detectar de los tests de integración en Sonar -->
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>agent-it</id>
+          </execution>
+        </executions>        
+      </plugin>
+
+    </plugins>
+  </build>
+</project>

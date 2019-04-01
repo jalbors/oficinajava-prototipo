@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+  <changeSet author="mmartinez" id="carga-datos-ejemplo"
+    context="test">
+    <comment>Carga datos de ejemplo</comment>
+    <loadData tableName="PROPIETARIOS" file="sample-propietarios.csv"
+      relativeToChangelogFile="true" />
+    <loadData tableName="MASCOTAS" file="sample-mascotas.csv"
+      relativeToChangelogFile="true">
+      <column name="FECHA_NACIMIENTO" header="FECHA_NACIMIENTO"
+        type="java.sql.Types.DATE" />
+    </loadData>
+    <loadData tableName="VISITAS" file="sample-visitas.csv"
+      relativeToChangelogFile="true">
+      <column name="FECHA_VISITA" header="FECHA_VISITA" type="java.sql.Types.DATE" />
+    </loadData>
+
+    <rollback>
+      <delete tableName="PROPIETARIOS" />
+      <delete tableName="MASCOTAS" />
+      <delete tableName="VISITAS" />
+    </rollback>
+  </changeSet>
+
+  <changeSet author="mmartinez" id="datos-ejemplo-recrear-secuencia"
+    context="test">
+    <comment>Recrea las secuencias para que no colisionen con los nuevos registros creados</comment>
+    <dropSequence sequenceName="PROPIETARIOS_ID_SEQ" />
+    <createSequence sequenceName="PROPIETARIOS_ID_SEQ"
+      startValue="100" incrementBy="50" />
+    <dropSequence sequenceName="MASCOTAS_ID_SEQ" />
+    <createSequence sequenceName="MASCOTAS_ID_SEQ" startValue="100"
+      incrementBy="50" />
+    <dropSequence sequenceName="VISITAS_ID_SEQ" />
+    <createSequence sequenceName="VISITAS_ID_SEQ" startValue="100"
+      incrementBy="50" />
+
+    <rollback>
+      <dropSequence sequenceName="PROPIETARIOS_ID_SEQ" />
+      <createSequence sequenceName="PROPIETARIOS_ID_SEQ"
+        startValue="1" incrementBy="50" />
+      <dropSequence sequenceName="MASCOTAS_ID_SEQ" />
+      <createSequence sequenceName="MASCOTAS_ID_SEQ" startValue="1"
+        incrementBy="50" />
+      <dropSequence sequenceName="VISITAS_ID_SEQ" />
+      <createSequence sequenceName="VISITAS_ID_SEQ" startValue="1"
+        incrementBy="50" />
+    </rollback>
+  </changeSet>
+</databaseChangeLog>

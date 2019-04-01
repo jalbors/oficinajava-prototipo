@@ -1,0 +1,117 @@
+
+= Guía rápida de inicio
+{localdate} {localtime}
+:doctype: book
+:lang: es
+:source-highlighter: pygments
+:sectnums:
+:toc:
+:toclevels: 4
+:toc-placement: left
+:toc-title: Índice de contenido
+
+.Control de cambios
+[options="header",cols="2,3,2,6,2"]
+|=======
+| Versión | Responsable | Organismo | Descripción del cambio | Fecha
+| 03.00.00 | Mario Martínez | DISID | Primera versión publicada oficialmente | 09/03/2018
+|=======
+
+== Introducción
+
+=== Objetivo
+
+En este documento se resumen los pasos a seguir
+para empaquetar y ejecutar rápidamente una aplicación _Spring Boot_
+desde la línea de comandos de la consola (terminal)
+del sistema operativo a partir de los fuentes del proyecto.
+
+=== Referencias
+
+* Entorno Tecnológico de Aplicaciones Java:
+** [dgtic-desarrollo] Análisis del Entorno de Desarrollo
+
+[[herramientas]]
+== Herramientas
+
+Las herramientas que se van a utilizar en el *empaquetado y ejecución* son:
+
+* Oracle *_JDK_* (_Java Development Kit_): Herramienta de desarrollo Java.
+* Apache *_Maven_*: Herramienta de construcción de proyectos.
+
+La descarga y la configuración de estas herramientas
+se describe en el documento de análisis del entorno de desarrollo [dgtic-desarrollo].
+
+[[empaquetar]]
+== Empaquetar
+
+Es requerido haber descargado y configurado
+previamente las <<herramientas, Herramientas>>.
+
+// tag::Empaquetar[]
+
+Inicialmente se debe empaquetar e instalar el proyecto,
+situándose en el directorio raíz del código fuente
+y ejecutando el siguiente comando _Maven_:
+
+[source,bash]
+----
+mvn install
+----
+
+En el futuro, se puede volver a ejecutar el empaquetado
+directamente con el comando _Maven_ `mvn package`.
+// end::Empaquetar[]
+
+[[base-datos]]
+== Base de datos
+
+La construcción de la base de datos local de desarrollo
+requiere antes <<empaquetar, Instalar>> el proyecto
+porque la construcción de la base de datos
+necesita que ciertos módulos _Maven_ del proyecto se encuentren instalados
+en el repositorio local de _Maven_.
+
+// tag::BaseDatos[]
+
+La construcción de la base de datos
+se realiza situándose en el sub directorio `repository` del código fuente
+y ejecutando el siguiente comando _Maven_:
+
+[source,bash]
+----
+mvn initialize liquibase:update
+----
+
+// end::BaseDatos[]
+
+[[ejecutar]]
+== Ejecutar
+
+La ejecución de la aplicación en el entorno local de desarrollo
+requiere antes construir la <<base-datos, Base de datos>>.
+
+// tag::Ejecutar[]
+
+La ejecución se realiza situándose en el sub directorio `application` del código fuente
+y ejecutando el siguiente comando _Maven_:
+
+[source,bash]
+----
+mvn spring-boot:run -Drun.profiles=dev
+----
+
+// end::Ejecutar[]
+
+== Acceder
+
+Tras <<ejecutar, Ejecutar>> la aplicación,
+acceder a la siguiente ruta en el navegador web:
+
+* http://localhost:8080
+
+Datos de acceso de ejemplo para el entorno local de desarrollo:
+
+* admin / 1234
+* system / 1234
+* user / 1234
